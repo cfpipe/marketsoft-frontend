@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MainLayout from './components/layout/MainLayout'
+import ProductsPage from './pages/ProductsPage'
 
 function HomePage() {
   return <h2>Bienvenido a MarketSoft</h2>
@@ -7,10 +8,6 @@ function HomePage() {
 
 function UsersPage() {
   return <h2>Usuarios</h2>
-}
-
-function ProductsPage() {
-  return <h2>Productos</h2>
 }
 
 function App() {
