@@ -193,6 +193,7 @@ function SaleDetailsPage() {
           <table className="table table-striped table-hover align-middle bg-white">
             <thead className="table-dark">
               <tr>
+                <th>ID</th>
                 <th>Venta</th>
                 <th>Producto</th>
                 <th>Cantidad</th>
@@ -204,6 +205,7 @@ function SaleDetailsPage() {
             <tbody>
               {details.data.map((detail) => (
                 <tr key={detail.id}>
+                  <td>{detail.id}</td>
                   <td>#{detail.saleId}</td>
                   <td>{detail.product?.name ?? detail.productId}</td>
                   <td>{detail.quantity}</td>

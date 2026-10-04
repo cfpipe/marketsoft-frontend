@@ -222,6 +222,7 @@ function ProductsPage() {
           <table className="table table-striped table-hover align-middle bg-white">
             <thead className="table-dark">
               <tr>
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Precio</th>
@@ -233,6 +234,7 @@ function ProductsPage() {
             <tbody>
               {products.map((product) => (
                 <tr key={product.id}>
+                  <td>{product.id}</td>
                   <td>{product.name}</td>
                   <td>{product.description}</td>
                   <td>${Number(product.price).toLocaleString('es-CO')}</td>

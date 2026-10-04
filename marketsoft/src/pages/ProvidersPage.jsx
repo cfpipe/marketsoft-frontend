@@ -196,6 +196,7 @@ function ProvidersPage() {
           <table className="table table-striped table-hover align-middle bg-white">
             <thead className="table-dark">
               <tr>
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Teléfono</th>
                 <th>Correo</th>
@@ -206,6 +207,7 @@ function ProvidersPage() {
             <tbody>
               {providers.map((provider) => (
                 <tr key={provider.id}>
+                  <td>{provider.id}</td>
                   <td>{provider.name}</td>
                   <td>{provider.phone}</td>
                   <td>{provider.email}</td>

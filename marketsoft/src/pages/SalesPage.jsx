@@ -229,7 +229,7 @@ function SalesPage() {
           <table className="table table-striped table-hover align-middle bg-white">
             <thead className="table-dark">
               <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th>Fecha</th>
                 <th>Vendedor</th>
                 <th>Productos</th>

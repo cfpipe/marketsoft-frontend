@@ -1,16 +1,52 @@
-# React + Vite
+# Actividad colaborativa N.º 2: Taller integrador — Frontend SPA del supermercado
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Propósito
 
-Currently, two official plugins are available:
+Desarrollar una aplicación de página única (*Single Page Application*, SPA) con React que consuma la API REST construida en la actividad 1. La aplicación permitirá realizar operaciones de creación, consulta, actualización y eliminación (CRUD) mediante una interfaz diseñada con Bootstrap.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Integrantes y responsabilidades
 
-## React Compiler
+| Integrante | Responsabilidades |
+|---|---|
+| **Cristian Felipe Barreto** | Creación del repositorio, definición de la arquitectura del frontend e implementación del CRUD de productos y proveedores. |
+| **Juan Camilo Giraldo A.** | Implementación de las funcionalidades correspondientes a usuarios, ventas y detalles de venta; integración de los componentes desarrollados; mejora de la interfaz con Bootstrap y realización de pruebas de la aplicación. |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Instrucciones para ejecutar y probar la aplicación
 
-## Expanding the ESLint configuration
+### 1. Descargar los proyectos
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Clonar o descargar los repositorios del **frontend** y del **backend** desarrollado en la actividad 1.
+
+### 2. Configurar las variables de entorno
+
+Crear el archivos `.env`  y configurar las variables de entorno correspondientes, incluida la conexión con la base de datos. Estos archivos están incluidos en GitHub, por lo que cada persona que realice las pruebas deberá crearlos en su entorno local.
+
+### 3. Iniciar la base de datos y el backend
+
+Verificar que la base de datos esté disponible e iniciar el backend . La API debe estar en ejecución para que el frontend pueda consultar y modificar la información.
+
+### 4. Instalar las dependencias del frontend
+
+Abrir una terminal en la carpeta raíz del frontend y ejecutar:
+
+```bash
+npm install
+```
+
+### 5. Iniciar el frontend
+
+Una vez instaladas las dependencias, ejecutar:
+
+```bash
+npm run dev
+```
+
+Abrir en el navegador la dirección local que indique la terminal.
+
+### 6. Probar las funcionalidades
+
+Verificar las operaciones de creación, consulta, actualización y eliminación disponibles para productos, proveedores, usuarios, ventas y detalles de venta. Comprobar que los cambios se reflejen correctamente en la interfaz y en la base de datos.
+
+### 7. Arquitectura
+
+El proyecto utiliza una arquitectura cliente-servidor, el fronted esta construido con React y separa las pagina, servicios y estilos. el React Router control la navegacion y Axios permite comunicarse con la API

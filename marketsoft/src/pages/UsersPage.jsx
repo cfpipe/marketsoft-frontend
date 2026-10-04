@@ -143,6 +143,7 @@ function UsersPage() {
           <table className="table table-striped table-hover align-middle bg-white">
             <thead className="table-dark">
               <tr>
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Correo</th>
                 <th>Rol</th>
@@ -152,6 +153,7 @@ function UsersPage() {
             <tbody>
               {users.map((user) => (
                 <tr key={user.id}>
+                  <td>{user.id}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.role}</td>
