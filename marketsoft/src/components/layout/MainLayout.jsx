@@ -27,9 +27,15 @@ function MainLayout({ children }) {
             </Link>
           </div>
 
-          <div>
+          <div style={{ marginBottom: '15px' }}>
             <Link to="/products" style={{ color: 'white' }}>
               Products
+            </Link>
+          </div>
+
+          <div>
+            <Link to="/providers" style={{ color: 'white' }}>
+              Providers
             </Link>
           </div>
         </nav>
