@@ -1,11 +1,20 @@
 import { NavLink } from 'react-router-dom'
-import { BsHouse, BsPeople, BsBoxSeam, BsTruck } from 'react-icons/bs'
+import {
+  BsHouse,
+  BsPeople,
+  BsBoxSeam,
+  BsTruck,
+  BsReceipt,
+  BsListUl,
+} from 'react-icons/bs'
 
 const menuItems = [
   { to: '/', label: 'Inicio', icon: BsHouse },
   { to: '/users', label: 'Usuarios', icon: BsPeople },
   { to: '/products', label: 'Productos', icon: BsBoxSeam },
   { to: '/providers', label: 'Proveedores', icon: BsTruck },
+  { to: '/sales', label: 'Ventas', icon: BsReceipt },
+  { to: '/sale-details', label: 'Detalles de venta', icon: BsListUl },
 ]
 
 function MainLayout({ children }) {
