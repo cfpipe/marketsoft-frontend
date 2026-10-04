@@ -5,6 +5,7 @@ import {
   updateProduct,
   deleteProduct,
 } from '../services/product.service'
+import { BsPencilSquare, BsTrash } from 'react-icons/bs'
 
 function ProductsPage() {
   const [products, setProducts] = useState([])
@@ -131,98 +132,135 @@ function ProductsPage() {
 
   return (
     <div>
-      <h2>Productos</h2>
+      <h2 className="mb-4">Productos</h2>
 
-      {error && <p>{error}</p>}
+      {error && <div className="alert alert-danger">{error}</div>}
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Nombre</label>
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
+      <form onSubmit={handleSubmit} className="card card-body mb-4">
+        <div className="row g-3">
+          <div className="col-md-4">
+            <label className="form-label">Nombre</label>
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              value={form.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="col-md-8">
+            <label className="form-label">Descripción</label>
+            <input
+              type="text"
+              name="description"
+              className="form-control"
+              value={form.description}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="col-md-4">
+            <label className="form-label">Precio</label>
+            <input
+              type="number"
+              name="price"
+              className="form-control"
+              value={form.price}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="col-md-4">
+            <label className="form-label">Stock</label>
+            <input
+              type="number"
+              name="stock"
+              className="form-control"
+              value={form.stock}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="col-md-4">
+            <label className="form-label">ID del proveedor</label>
+            <input
+              type="number"
+              name="providerId"
+              className="form-control"
+              value={form.providerId}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
 
-        <div>
-          <label>Descripción</label>
-          <input
-            type="text"
-            name="description"
-            value={form.description}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label>Precio</label>
-          <input
-            type="number"
-            name="price"
-            value={form.price}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div>
-          <label>Stock</label>
-          <input
-            type="number"
-            name="stock"
-            value={form.stock}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div>
-          <label>ID del proveedor</label>
-          <input
-            type="number"
-            name="providerId"
-            value={form.providerId}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <button type="submit">
-          {editingProduct ? 'Actualizar producto' : 'Guardar producto'}
-        </button>
-
-        {editingProduct && (
-          <button type="button" onClick={handleCancel}>
-            Cancelar
+        <div className="mt-3 d-flex gap-2">
+          <button type="submit" className="btn btn-primary">
+            {editingProduct ? 'Actualizar producto' : 'Guardar producto'}
           </button>
-        )}
+
+          {editingProduct && (
+            <button
+              type="button"
+              className="btn btn-outline-secondary"
+              onClick={handleCancel}
+            >
+              Cancelar
+            </button>
+          )}
+        </div>
       </form>
 
-      <hr />
-
       {products.length === 0 ? (
-        <p>No hay productos registrados.</p>
+        <div className="alert alert-info">No hay productos registrados.</div>
       ) : (
-        <ul>
-          {products.map((product) => (
-            <li key={product.id}>
-              {product.name} - $
-              {Number(product.price).toLocaleString('es-CO')} - Stock:{' '}
-              {product.stock}
-
-              <button type="button" onClick={() => handleEdit(product)}>
-                Editar
-              </button>
-
-              <button type="button" onClick={() => handleDelete(product.id)}>
-                Eliminar
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="table-responsive">
+          <table className="table table-striped table-hover align-middle bg-white">
+            <thead className="table-dark">
+              <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Proveedor</th>
+                <th className="table-actions">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map((product) => (
+                <tr key={product.id}>
+                  <td>{product.name}</td>
+                  <td>{product.description}</td>
+                  <td>${Number(product.price).toLocaleString('es-CO')}</td>
+                  <td>{product.stock}</td>
+                  <td>{product.providerId}</td>
+                  <td className="table-actions">
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-outline-primary me-2"
+                      title="Editar"
+                      onClick={() => handleEdit(product)}
+                    >
+                      <BsPencilSquare />
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-outline-danger"
+                      title="Eliminar"
+                      onClick={() => handleDelete(product.id)}
+                    >
+                      <BsTrash />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   )

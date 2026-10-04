@@ -1,62 +1,35 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { BsHouse, BsPeople, BsBoxSeam, BsTruck } from 'react-icons/bs'
+
+const menuItems = [
+  { to: '/', label: 'Inicio', icon: BsHouse },
+  { to: '/users', label: 'Usuarios', icon: BsPeople },
+  { to: '/products', label: 'Productos', icon: BsBoxSeam },
+  { to: '/providers', label: 'Proveedores', icon: BsTruck },
+]
 
 function MainLayout({ children }) {
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
-      
-      <aside
-        style={{
-          width: '220px',
-          backgroundColor: '#212529',
-          color: 'white',
-          padding: '20px',
-        }}
-      >
-        <h2>MarketSoft</h2>
+    <div className="app-layout">
+      <aside className="app-sidebar text-white p-3">
+        <h4 className="mb-4">MarketSoft</h4>
 
-        <nav style={{ marginTop: '30px' }}>
-          <div style={{ marginBottom: '15px' }}>
-            <Link to="/" style={{ color: 'white' }}>
-              Home
-            </Link>
-          </div>
-
-          <div style={{ marginBottom: '15px' }}>
-            <Link to="/users" style={{ color: 'white' }}>
-              Users
-            </Link>
-          </div>
-
-          <div style={{ marginBottom: '15px' }}>
-            <Link to="/products" style={{ color: 'white' }}>
-              Products
-            </Link>
-          </div>
-
-          <div>
-            <Link to="/providers" style={{ color: 'white' }}>
-              Providers
-            </Link>
-          </div>
+        <nav className="nav flex-column gap-1">
+          {menuItems.map(({ to, label, icon: Icon }) => (
+            <NavLink key={to} to={to} end className="nav-link">
+              <Icon className="me-2" />
+              {label}
+            </NavLink>
+          ))}
         </nav>
       </aside>
 
-      <div style={{ flex: 1 }}>
-        
-        <header
-          style={{
-            padding: '20px',
-            backgroundColor: 'white',
-            borderBottom: '1px solid #ddd',
-          }}
-        >
-          <h1>MarketSoft</h1>
+      <div className="app-content">
+        <header className="app-header px-4 py-3">
+          <h1 className="h4 m-0">MarketSoft</h1>
         </header>
 
-        <main style={{ padding: '30px' }}>
-          {children}
-        </main>
-
+        <main className="p-4">{children}</main>
       </div>
     </div>
   )

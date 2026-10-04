@@ -5,6 +5,7 @@ import {
   updateProvider,
   deleteProvider
 } from '../services/provider.service'
+import { BsPencilSquare, BsTrash } from 'react-icons/bs'
 
 function ProvidersPage() {
   const [providers, setProviders] = useState([])
@@ -119,83 +120,119 @@ function ProvidersPage() {
 
   return (
     <div>
-      <h2>Proveedores</h2>
+      <h2 className="mb-4">Proveedores</h2>
 
-      {error && <p>{error}</p>}
+      {error && <div className="alert alert-danger">{error}</div>}
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Nombre"
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
+      <form onSubmit={handleSubmit} className="card card-body mb-4">
+        <div className="row g-3">
+          <div className="col-md-3">
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              placeholder="Nombre"
+              value={form.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <input
-          type="text"
-          name="phone"
-          placeholder="Teléfono"
-          value={form.phone}
-          onChange={handleChange}
-        />
+          <div className="col-md-3">
+            <input
+              type="text"
+              name="phone"
+              className="form-control"
+              placeholder="Teléfono"
+              value={form.phone}
+              onChange={handleChange}
+            />
+          </div>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Correo electrónico"
-          value={form.email}
-          onChange={handleChange}
-        />
+          <div className="col-md-3">
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              placeholder="Correo electrónico"
+              value={form.email}
+              onChange={handleChange}
+            />
+          </div>
 
-        <input
-          type="text"
-          name="city"
-          placeholder="Ciudad"
-          value={form.city}
-          onChange={handleChange}
-        />
+          <div className="col-md-3">
+            <input
+              type="text"
+              name="city"
+              className="form-control"
+              placeholder="Ciudad"
+              value={form.city}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
 
-        <button type="submit">
-          {editingId ? 'Actualizar proveedor' : 'Guardar proveedor'}
-        </button>
-
-        {editingId && (
-          <button type="button" onClick={handleCancel}>
-            Cancelar
+        <div className="mt-3 d-flex gap-2">
+          <button type="submit" className="btn btn-primary">
+            {editingId ? 'Actualizar proveedor' : 'Guardar proveedor'}
           </button>
-        )}
+
+          {editingId && (
+            <button
+              type="button"
+              className="btn btn-outline-secondary"
+              onClick={handleCancel}
+            >
+              Cancelar
+            </button>
+          )}
+        </div>
       </form>
 
-      <hr />
-
       {providers.length === 0 ? (
-        <p>No hay proveedores registrados.</p>
+        <div className="alert alert-info">No hay proveedores registrados.</div>
       ) : (
-        <ul>
-          {providers.map((provider) => (
-            <li key={provider.id}>
-              <strong>{provider.name}</strong>
-              {' - '}
-              {provider.phone}
-              {' - '}
-              {provider.email}
-              {' - '}
-              {provider.city}
-
-              {' '}
-
-              <button onClick={() => handleEdit(provider)}>
-                Editar
-              </button>
-
-              <button onClick={() => handleDelete(provider.id)}>
-                Eliminar
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="table-responsive">
+          <table className="table table-striped table-hover align-middle bg-white">
+            <thead className="table-dark">
+              <tr>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Ciudad</th>
+                <th className="table-actions">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {providers.map((provider) => (
+                <tr key={provider.id}>
+                  <td>{provider.name}</td>
+                  <td>{provider.phone}</td>
+                  <td>{provider.email}</td>
+                  <td>{provider.city}</td>
+                  <td className="table-actions">
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-outline-primary me-2"
+                      title="Editar"
+                      onClick={() => handleEdit(provider)}
+                    >
+                      <BsPencilSquare />
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-outline-danger"
+                      title="Eliminar"
+                      onClick={() => handleDelete(provider.id)}
+                    >
+                      <BsTrash />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   )
